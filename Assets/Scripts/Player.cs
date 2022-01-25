@@ -39,26 +39,46 @@ public class Player : MonoBehaviour
 
             //p1.transform.Translate(Vector3.up*speed*Time.deltaTime);
             //p1.transform.Translate(Vector3.up * actualSpeed * Time.deltaTime, Space.Self);
-            p1.GetComponent<Rigidbody2D>().velocity = new Vector3(0,speed,0);
+            p1.GetComponent<Rigidbody2D>().velocity = new Vector2(0,speed);
 
-        }else if(Input.GetKey(KeyCode.S)){
+        }else if(Input.GetKeyUp(KeyCode.W)){
+            p1.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        }
+        
+        
+         if(Input.GetKey(KeyCode.S)){
 
             //p1.transform.Translate(Vector3.down*speed*Time.deltaTime);
             //p1.transform.Translate(Vector3.down * actualSpeed * Time.deltaTime, Space.Self);
-            p1.GetComponent<Rigidbody2D>().velocity = new Vector3(0,-speed,0);
+            p1.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-speed);
+
+        }else if(Input.GetKeyUp(KeyCode.S)){
+
+            p1.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
         }
         
          if(Input.GetKey(KeyCode.UpArrow)){
 
             //p2.transform.Translate(Vector3.up*speed*Time.deltaTime);
-            p2.GetComponent<Rigidbody2D>().velocity = new Vector3(0,speed,0);
+            p2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,speed);
 
-        }else if(Input.GetKey(KeyCode.DownArrow)){
+        }else if(Input.GetKeyUp(KeyCode.UpArrow)){
+
+            p2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
+        }
+        
+         if(Input.GetKey(KeyCode.DownArrow)){
 
             //p2.transform.Translate(Vector3.down*speed*Time.deltaTime);
-            p2.GetComponent<Rigidbody2D>().velocity = new Vector3(0,-speed,0);
+            p2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,-speed);
 
-        } 
+        } else if(Input.GetKeyUp(KeyCode.DownArrow)){
+
+            p2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
+        }
     }
 
     public void OnCollisionEnter(Collision other) {
