@@ -6,25 +6,18 @@ public class Player : MonoBehaviour
 {
     float speed;
 
-    float actualSpeed;
-
     GameObject p1;
 
     GameObject p2;
 
-    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         speed = 10f;
 
-        actualSpeed = speed;
-
         p1 = GameObject.Find("P1");
 
         p2 = GameObject.Find("P2");
-
-        //rb = GetComponent<Rigidbody2D>();
 
         if (p1 == null || p2 == null){
             Debug.Log("Algún jugador sin inicializar");
@@ -79,11 +72,5 @@ public class Player : MonoBehaviour
             p2.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 
         }
-    }
-
-    public void OnCollisionEnter(Collision other) {
-
-        Debug.Log("Baia, que golpesito más tonto");
-        actualSpeed = 0;
     }
 }
