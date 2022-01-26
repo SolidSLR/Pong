@@ -5,40 +5,28 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
     public GameObject ballPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
+
         BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        CheckBall();
 
-    private void OnTriggerEnter2D(Collider2D colision) {
-
-        if(colision.gameObject.tag=="Gol1"){
-
-           Debug.Log("Gol para jugador 1");
-
-           StartCoroutine("CorutSpawn");
-       
-       }else if(colision.gameObject.tag=="Gol2"){
-       
-           Debug.Log("Gol para jugador 2");
-
-           StartCoroutine("CorutSpawn");
-       
-       }
+        if(ballPrefab.GetComponent<Ball>().Goal == true){
+            //StartCoroutine("CorutSpawn");
+            Debug.Log("Hay una bola en juego");
+        }
     }
 
     private IEnumerator CorutSpawn(){
 
         Debug.Log("Se ha iniciado la corrutina");
-
-        Destroy(this);
 
         yield return new WaitForSeconds(3f);
 
@@ -53,5 +41,18 @@ public class SceneController : MonoBehaviour
 
         Instantiate(prefab, spawnPoint, Quaternion.identity);
 
+    }
+
+    private void CheckBall(){
+        if(GameObject.Find("Ball(Clone)").GetComponent<Ball>().Goal){
+            
+            Debug.Log("Hay una bola en juego");
+        }else {
+
+            //BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
+
+            //StartCoroutine("CorutSpawn");
+
+        }
     }
 }

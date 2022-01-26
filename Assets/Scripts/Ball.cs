@@ -12,19 +12,25 @@ public class Ball : MonoBehaviour
 
     public Vector2 SpawnPoint{
         get { return spawnPoint;}
+        
+    }
+
+    protected bool goal = true;
+
+    public bool Goal{
+        get {return goal;}
     }
     // Start is called before the first frame update
     void Start()
     {
         speed = -5f;
 
-        //ball = GameObject.Find("Ball");
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<Rigidbody2D>().velocity = new Vector3(speed, 0, 0);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
     }
 
     public void OnCollisionEnter2D(Collision2D colision) {
@@ -44,6 +50,19 @@ public class Ball : MonoBehaviour
                Debug.Log("Velocidad: "+speed);
 
            }
+       }
+    }
+
+    private void OnTriggerEnter2D(Collider2D colision){
+        
+       if(colision.gameObject.tag == "Gol1" || colision.gameObject.tag == "Gol2"){
+
+           Debug.Log("Se ha marcado gol");
+
+           Destroy(this.gameObject,1f);
+
+           goal = false;
+
        }
     }
 }
