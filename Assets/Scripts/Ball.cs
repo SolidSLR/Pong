@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, speed);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
 
         CheckBall();
 
@@ -50,10 +50,12 @@ public class Ball : MonoBehaviour
 
         speed=-speed;
  
-        if(colision.gameObject.tag=="Player"){
+        if(colision.gameObject.name=="P1"){
 
-            //speed=-speed;
+            Debug.Log("Jugador 1 devuelve");
 
+        }else if(colision.gameObject.name=="P2"){
+            Debug.Log("Jugador 2 devuelve");
         }
     }
 
