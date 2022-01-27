@@ -20,10 +20,19 @@ public class Ball : MonoBehaviour
     public bool Goal{
         get {return goal;}
     }
+
+    private int random; 
     // Start is called before the first frame update
     void Start()
     {
-        speed = -5f;
+
+        random = Random.Range(0,2);
+
+        if(random == 0){
+            speed = -5f;
+        }else if(random == 1){
+            speed = 5f;
+        }
 
     }
 
@@ -31,6 +40,10 @@ public class Ball : MonoBehaviour
     void Update()
     {
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+
+        CheckBall();
+
+        //Debug.Log(random = Random.Range(0,2));
     }
 
     public void OnCollisionEnter2D(Collision2D colision) {
@@ -64,5 +77,24 @@ public class Ball : MonoBehaviour
            goal = false;
 
        }
+    }
+
+    private void CheckBall(){
+        if(GameObject.Find("Ball(Clone)").GetComponent<Ball>().Goal){
+            
+            Debug.Log("Hay una bola en juego");
+        }else {
+
+            //BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
+
+            //StartCoroutine("CorutSpawn");
+
+            goal = true;
+
+            Debug.Log("No hay una bola en juego");
+
+            Debug.Log("Valor de goal en script Ball"+goal);
+
+        }
     }
 }

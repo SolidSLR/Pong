@@ -18,10 +18,6 @@ public class SceneController : MonoBehaviour
     {
         CheckBall();
 
-        if(ballPrefab.GetComponent<Ball>().Goal == true){
-            //StartCoroutine("CorutSpawn");
-            Debug.Log("Hay una bola en juego");
-        }
     }
 
     private IEnumerator CorutSpawn(){
@@ -47,11 +43,12 @@ public class SceneController : MonoBehaviour
         if(GameObject.Find("Ball(Clone)").GetComponent<Ball>().Goal){
             
             Debug.Log("Hay una bola en juego");
+
         }else {
 
-            //BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
+            StartCoroutine("CorutSpawn");
 
-            //StartCoroutine("CorutSpawn");
+            Debug.Log("No hay una bola en juego");
 
         }
     }
