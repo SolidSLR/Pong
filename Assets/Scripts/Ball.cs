@@ -29,9 +29,9 @@ public class Ball : MonoBehaviour
         random = Random.Range(0,2);
 
         if(random == 0){
-            speed = -5f;
+            speed = -7.5f;
         }else if(random == 1){
-            speed = 5f;
+            speed = 7.5f;
         }
 
     }
@@ -48,27 +48,16 @@ public class Ball : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D colision) {
  
-       if(colision.gameObject.tag=="Player"){
+        if(colision.gameObject.tag=="Player"){
 
-           if(speed>0){
-
-               speed=-speed;
-
-               Debug.Log("Velocidad: "+speed);
-
-           }else if(speed<0){
-
-               speed=-speed;
-
-               Debug.Log("Velocidad: "+speed);
-
-           }
-       }
+            speed=-speed;
+            
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D colision){
         
-       if(colision.gameObject.tag == "Gol1" || colision.gameObject.tag == "Gol2"){
+        if(colision.gameObject.tag == "Gol1" || colision.gameObject.tag == "Gol2"){
 
            Debug.Log("Se ha marcado gol");
 
@@ -76,24 +65,14 @@ public class Ball : MonoBehaviour
 
            goal = false;
 
-       }
+        }
     }
 
     private void CheckBall(){
-        if(GameObject.Find("Ball(Clone)").GetComponent<Ball>().Goal){
+
+        if(!GameObject.Find("Ball(Clone)").GetComponent<Ball>().Goal){
             
-            Debug.Log("Hay una bola en juego");
-        }else {
-
-            //BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
-
-            //StartCoroutine("CorutSpawn");
-
             goal = true;
-
-            Debug.Log("No hay una bola en juego");
-
-            Debug.Log("Valor de goal en script Ball"+goal);
 
         }
     }

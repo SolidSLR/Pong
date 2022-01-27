@@ -28,7 +28,6 @@ public class SceneController : MonoBehaviour
 
         BallSpawn(ballPrefab, ballPrefab.GetComponent<Ball>().SpawnPoint);
         
-
     }
 
     private void BallSpawn(GameObject prefab, Vector2 spawnPoint){
