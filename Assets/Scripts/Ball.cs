@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     private Vector2 spawnPoint = new Vector2(0,0);
 
     public Vector2 SpawnPoint{
+
         get { return spawnPoint;}
         
     }
@@ -18,7 +19,9 @@ public class Ball : MonoBehaviour
     protected bool goal = true;
 
     public bool Goal{
+
         get {return goal;}
+
     }
 
     private int random; 
@@ -29,11 +32,14 @@ public class Ball : MonoBehaviour
         random = Random.Range(0,2);
 
         if(random == 0){
-            speed = -7.5f;
-        }else if(random == 1){
-            speed = 7.5f;
-        }
 
+            speed = -7.5f;
+
+        }else if(random == 1){
+
+            speed = 7.5f;
+
+        }
     }
 
     // Update is called once per frame
@@ -43,7 +49,6 @@ public class Ball : MonoBehaviour
 
         CheckBall();
 
-        //Debug.Log(random = Random.Range(0,2));
     }
 
     public void OnCollisionEnter2D(Collision2D colision) {
@@ -55,7 +60,9 @@ public class Ball : MonoBehaviour
             Debug.Log("Jugador 1 devuelve");
 
         }else if(colision.gameObject.name=="P2"){
+
             Debug.Log("Jugador 2 devuelve");
+
         }
     }
 
